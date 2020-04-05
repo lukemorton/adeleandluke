@@ -21,6 +21,7 @@
   "devDependencies": {
     "babel-jest": "^25.2.6",
     "babel-plugin-module-resolver": "^4.0.0",
+    "frontmatter-markdown-loader": "^3.3.0",
     "husky": "^4.2.3",
     "jest": "^25.2.7",
     "lint-staged": "^10.1.2",
