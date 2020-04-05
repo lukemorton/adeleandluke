@@ -25,7 +25,7 @@ export default ({ recipes }) => (
               as={`/recipes/${recipe.slug}`}
               passHref
             >
-              <RecipeListLink>{recipe.slug}</RecipeListLink>
+              <RecipeListLink>{recipe.title}</RecipeListLink>
             </Link>
           </RecipeListItem>
         ))}
