@@ -1,3 +1,4 @@
+import { AppContainer } from '~interfaces/recipes/containers'
 import { Recipe } from '~interfaces/recipes/components'
 
 export default ({ recipe }) => <Recipe {...recipe} />
@@ -7,7 +8,11 @@ const RECIPES = [
 ]
 
 export const getStaticPaths = async () => {
-  const paths = RECIPES.map((recipe) => {
+  const container = new AppContainer()
+  const listAllRecipes = container.getListAllRecipes()
+  const { recipes } = await listAllRecipes()
+
+  const paths = recipes.map((recipe) => {
     return { params: { recipe: recipe.slug } }
   })
 
