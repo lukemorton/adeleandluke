@@ -1,1 +1,1 @@
-export default ({ children }) => <div>{children}</div>
+export default ({ children }) => <div className="col-md-3">{children}</div>
