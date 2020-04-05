@@ -2,7 +2,9 @@ import { Recipe } from '~interfaces/recipes/components'
 
 export default ({ recipe }) => <Recipe {...recipe} />
 
-const RECIPES = [{ slug: 'ancho-chicken', filePath: '01-ancho-chicken' }]
+const RECIPES = [
+  { slug: 'ancho-chicken-tacos', filePath: '01-ancho-chicken-tacos' },
+]
 
 export const getStaticPaths = async () => {
   const paths = RECIPES.map((recipe) => {
