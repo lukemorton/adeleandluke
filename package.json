@@ -1,0 +1,48 @@
+{
+  "name": "adeleandluke",
+  "version": "0.1.0",
+  "description": "Recipes by Adele and Luke",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "format": "prettier --write '{.github,page*,src,thoughts}/**/*.{js,css,md,yml}'",
+    "ci": "prettier --check '{.github,page*,src,thoughts}/**/*.{js,css,md,yml}' && jest",
+    "test": "jest"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "next": "^9.3.4",
+    "next-offline": "^5.0.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "babel-jest": "^25.2.6",
+    "babel-plugin-module-resolver": "^4.0.0",
+    "husky": "^4.2.3",
+    "jest": "^25.2.7",
+    "lint-staged": "^10.1.2",
+    "now": "^17.1.1",
+    "prettier": "^2.0.2"
+  },
+  "jest": {
+    "setupFiles": [
+      "<rootDir>/src/setupTests.js"
+    ]
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,css,md,yml}": [
+      "prettier --write"
+    ]
+  }
+}
