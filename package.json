@@ -14,7 +14,6 @@
   "license": "UNLICENSED",
   "dependencies": {
     "next": "^9.3.4",
-    "next-offline": "^5.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
@@ -22,10 +21,15 @@
     "babel-jest": "^25.2.6",
     "babel-plugin-module-resolver": "^4.0.0",
     "bootstrap": "^4.4.1",
-    "frontmatter-markdown-loader": "^3.3.0",
+    "front-matter-loader": "^0.2.0",
+    "html-loader": "^1.1.0",
     "husky": "^4.2.3",
     "jest": "^25.2.7",
+    "json-loader": "^0.5.7",
     "lint-staged": "^10.1.2",
+    "markdown-loader": "^5.1.0",
+    "next-images": "^1.4.0",
+    "next-offline": "^5.0.0",
     "now": "^17.1.1",
     "prettier": "^2.0.2",
     "sass": "^1.26.3"

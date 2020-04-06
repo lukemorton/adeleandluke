@@ -13,6 +13,10 @@ const buildDish = (ctx) => (filePath) => {
 export default (requireContext) => {
   const ctx = requireContext
     ? requireContext()
-    : require.context('../content/dishes', true, /about.md$/)
+    : require.context(
+        '!!json-loader!front-matter-loader!../content/dishes',
+        true,
+        /about.md$/
+      )
   return ctx.keys().map(buildDish(ctx))
 }
