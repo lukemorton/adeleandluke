@@ -1,36 +1,22 @@
 import allDishesFromFilesystem from './allDishesFromFilesystem'
-
-const MOCK_FILE_PATHS = ['./01-ancho-chicken-tacos/about.md']
-const MOCK_ABOUT = {
-  attributes: {
-    title: 'Ancho Chicken Tacos',
-    publishedAt: '2020-04-05',
-  },
-  html: '<p>Some html</p>',
-}
+import { mockLoader, cleanUpMockLoader, ABOUT_MOCK_FILES } from './testHelpers'
 
 describe('allDishesFromFilesystem', () => {
   it('should call requireContext', () => {
-    const mockCtx = jest.fn().mockReturnValue(MOCK_ABOUT)
-    mockCtx.keys = () => MOCK_FILE_PATHS
-    const mockRequireContext = jest.fn().mockReturnValue(mockCtx)
-    allDishesFromFilesystem(mockRequireContext)
-    expect(mockRequireContext).toBeCalled()
+    const frontMatterLoader = mockLoader('aboutFrontMatter')
+    allDishesFromFilesystem()
+    expect(frontMatterLoader).toBeCalled()
   })
 
   it('should call require each path', () => {
-    const mockCtx = jest.fn().mockReturnValue(MOCK_ABOUT)
-    mockCtx.keys = () => MOCK_FILE_PATHS
-    const mockRequireContext = jest.fn().mockReturnValue(mockCtx)
-    allDishesFromFilesystem(mockRequireContext)
-    expect(mockCtx).toBeCalledTimes(MOCK_FILE_PATHS.length)
+    const frontMatterLoader = mockLoader('aboutFrontMatter')
+    allDishesFromFilesystem()
+    expect(frontMatterLoader).toBeCalledTimes(ABOUT_MOCK_FILES.length)
   })
 
   it('should construct slug from filePath', () => {
-    const mockCtx = jest.fn().mockReturnValue(MOCK_ABOUT)
-    mockCtx.keys = () => MOCK_FILE_PATHS
-    const mockRequireContext = jest.fn().mockReturnValue(mockCtx)
-    const [firstDish] = allDishesFromFilesystem(mockRequireContext)
+    mockLoader('aboutFrontMatter')
+    const [firstDish] = allDishesFromFilesystem()
     expect(firstDish.slug).toEqual('ancho-chicken-tacos')
   })
 })

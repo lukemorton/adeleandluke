@@ -1,12 +1,4 @@
-const loadFrontMatter = require.context(
-  '!!json-loader!front-matter-loader!../content/dishes',
-  true
-)
-
-const loadMarkdown = require.context(
-  '!!html-loader!markdown-loader!front-matter-loader?onlyBody!../content/dishes',
-  true
-)
+import { frontMatterLoader, markdownLoader } from './webpackLoaders'
 
 const findAboutPath = (paths) =>
   paths.find((path) => path.indexOf('about.md') > -1)
@@ -28,17 +20,19 @@ const buildInstructions = ({ attributes }, html) => {
 }
 
 export default (slug, requireContext) => {
+  const loadFrontMatter = frontMatterLoader()
   const allFrontMatterPaths = slugPaths(slug, loadFrontMatter.keys())
-  const aboutFrontMatterPath = findAboutPath(allFrontMatterPaths)
-  const aboutFrontMatter = loadFrontMatter(aboutFrontMatterPath)
-  const instructionsFrontMatterPath = findInstructionsPath(allFrontMatterPaths)
-  const instructionsFrontMatter = loadFrontMatter(instructionsFrontMatterPath)
+  const aboutFrontMatter = loadFrontMatter(findAboutPath(allFrontMatterPaths))
+  const instructionsFrontMatter = loadFrontMatter(
+    findInstructionsPath(allFrontMatterPaths)
+  )
 
+  const loadMarkdown = markdownLoader()
   const allMarkdownPaths = slugPaths(slug, loadMarkdown.keys())
-  const aboutMarkdownPath = findAboutPath(allMarkdownPaths)
-  const aboutMarkdown = loadMarkdown(aboutMarkdownPath)
-  const instructionsMarkdownPath = findInstructionsPath(allMarkdownPaths)
-  const instructionsMarkdown = loadMarkdown(instructionsMarkdownPath)
+  const aboutMarkdown = loadMarkdown(findAboutPath(allMarkdownPaths))
+  const instructionsMarkdown = loadMarkdown(
+    findInstructionsPath(allMarkdownPaths)
+  )
 
   return {
     ...buildAbout(aboutFrontMatter, aboutMarkdown),
