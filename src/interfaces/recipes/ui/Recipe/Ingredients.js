@@ -4,9 +4,9 @@ const Ingredient = ({ item }) => (
   </>
 )
 
-export default ({ items }) => (
+export default ({ title, items }) => (
   <>
-    <h2>Ingredients</h2>
+    <h2>{title}</h2>
 
     <ul>
       {items.map((item, i) => (

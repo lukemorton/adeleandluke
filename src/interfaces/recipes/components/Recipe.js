@@ -32,7 +32,7 @@ export default ({
     </PageMainContent>
 
     <PageSideContent>
-      <RecipeIngredients items={ingredients} />
+      <RecipeIngredients title="Ingredients" items={ingredients} />
     </PageSideContent>
   </Page>
 )
