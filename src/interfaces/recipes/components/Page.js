@@ -3,6 +3,10 @@ import Link from 'next/link'
 import {
   PageContainer,
   PageHeader,
+  PageHeaderBrand,
+  PageHeaderNav,
+  PageHeaderNavItem,
+  PageHeaderNavLink,
   PageFooter,
   BrandLink,
 } from '~interfaces/recipes/ui'
@@ -14,9 +18,19 @@ export default ({ title, children }) => (
     </Head>
 
     <PageHeader>
-      <Link href="/" passHref>
-        <BrandLink />
-      </Link>
+      <PageHeaderBrand>
+        <Link href="/" passHref>
+          <BrandLink />
+        </Link>
+      </PageHeaderBrand>
+
+      <PageHeaderNav>
+        <PageHeaderNavItem>
+          <Link href="/" passHref>
+            <PageHeaderNavLink>Home</PageHeaderNavLink>
+          </Link>
+        </PageHeaderNavItem>
+      </PageHeaderNav>
     </PageHeader>
 
     {children}
