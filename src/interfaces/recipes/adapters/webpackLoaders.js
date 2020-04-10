@@ -8,11 +8,20 @@ export const aboutFrontMatterLoader = () =>
 
 export const frontMatterLoader = () =>
   global.mockFrontMatterLoader ||
-  require.context('!!json-loader!front-matter-loader!../content/dishes', true)
+  require.context(
+    '!!json-loader!front-matter-loader!../content/dishes',
+    true,
+    /.md$/
+  )
 
 export const markdownLoader = () =>
   global.mockMarkdownLoader ||
   require.context(
     '!!html-loader!markdown-loader!front-matter-loader?onlyBody!../content/dishes',
-    true
+    true,
+    /.md$/
   )
+
+export const featuredImageLoader = () =>
+  global.mockFeaturedImageLoader ||
+  require.context('../content/dishes', true, /.(jpe?g|png)$/)

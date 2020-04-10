@@ -5,6 +5,7 @@ const MOCK_RECIPE = {
   slug: 'cool',
   publishedAt: '2020-04-05T00:00:00.000Z',
   updatedAt: undefined,
+  featuredImageSrc: './cool.jpg',
 }
 
 describe('listAllRecipes', () => {
@@ -44,6 +45,7 @@ describe('listAllRecipes', () => {
     expect(recipe).toHaveProperty('slug')
     expect(recipe).toHaveProperty('publishedAt')
     expect(recipe).toHaveProperty('updatedAt')
+    expect(recipe).toHaveProperty('featuredImageSrc')
     expect(recipe).toHaveProperty('aboutHtml')
     expect(recipe).toHaveProperty('instructionsHtml')
     expect(recipe).toHaveProperty('ingredients')
@@ -58,5 +60,18 @@ describe('listAllRecipes', () => {
     })
 
     expect(recipe.updatedAt).toBe(null)
+  })
+
+  it('should return null when updatedAt isnt provided', async () => {
+    const mockOneRecipe = jest
+      .fn()
+      .mockReturnValue({ ...MOCK_RECIPE, featuredImageSrc: undefined })
+
+    const { recipe } = await fetchOneRecipe({
+      oneRecipe: mockOneRecipe,
+      slug,
+    })
+
+    expect(recipe.featuredImageSrc).toBe(null)
   })
 })
