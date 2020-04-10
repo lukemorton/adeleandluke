@@ -10,8 +10,8 @@ const slugPaths = (slug, paths) =>
   paths.filter((path) => path.indexOf(slug) > -1)
 
 const buildAbout = ({ attributes }, html) => {
-  const { title, publishedAt, updatedAt } = attributes
-  return { title, publishedAt, updatedAt, aboutHtml: html }
+  const { title, publishedAt, updatedAt, featuredImage } = attributes
+  return { title, publishedAt, updatedAt, featuredImage, aboutHtml: html }
 }
 
 const buildInstructions = ({ attributes }, html) => {
